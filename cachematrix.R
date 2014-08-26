@@ -17,14 +17,20 @@ rm(list=ls())
 # Write a short comment describing this function
 ## Create a matrix object that can cache it's inverse
 makeCacheMatrix <- function(x = matrix()) {
+  ## initialize the inverse
   m <- NULL
+  # set the matrix
   set <- function(y) {
     x <<- y
     m <<- NULL
   }
+  # get the matrix
   get <- function() x
+  # set the inverse 
   setsolve <- function(solve) m <<- solve
+  # get the inverse
   getsolve <- function() m
+  ##return a list of the methods
   list(set = set, get = get,
        setsolve = setsolve,
        getsolve = getsolve)
@@ -56,6 +62,6 @@ mymat<-matrix(c(1.666,0.233,0.233,1.666), nrow=2, ncol=2)
 #mymat%*%mymatI
 
 ## test the Cached solution
-y<-makeCacheMatrix(mymat)
-cacheSolve(y)
-mymat%*%cacheSolve(y)
+#y<-makeCacheMatrix(mymat)
+#cacheSolve(y)
+#mymat%*%cacheSolve(y)
